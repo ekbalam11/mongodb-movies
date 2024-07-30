@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <nav>
+            <h1>
+                MoviesDB
+            </h1>
+        </nav>
+        <section class="container">
+            <form action="/">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title">
+                <input type="submit" value="Search">
+            </form>
+        </section>
+        <section class="movies-section">
+            <% for (const doc of documents) { %>
+            <div class="div-flex">
+                <header class="movie-title">
+                    <%= doc.title %>
+                </header>
+                <img class="movie-poster" src="<%= doc.poster %>" alt="">
+                <footer>Año de lanzamiento: <%= doc.year %></footer>
+            </div>
+            <% } %>
+        </section>
+    </main>
+</body>
+</html>
