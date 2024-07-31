@@ -32,12 +32,32 @@ let database;
 
 // --------------------------------------DB function
 app.get('/', async (req, res) => {
-
+        //1. Query to the DB
         const movies = database.collection("movies");
-        const query = {};
-        const options = { sort: { year: -1 }, limit: 5 }
+        console.log("querystring: ", req.query);
+        const { keyword, type, fromYear } = req.query;
+        console.log(keyword);
+
+        let query = {};
+
+        if (keyword) {
+            query.title = new RegExp(keyword, 'i');
+        }
+
+        console.log("The query so far: ", query);
+
+        if (type) {
+            query.type = type;
+        }
+
+        if (fromYear) {
+            query.year = { $gte: Number(fromYear) }
+        }
+
+
+        const options = { sort: { year: -1 }, limit: 25 }
         const documents = await movies.find(query, options).toArray();
-        console.log(documents)
+        // console.log(documents)
 
         res.render('index', {
             documents

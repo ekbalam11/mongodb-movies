@@ -16,8 +16,20 @@
         </nav>
         <section class="container">
             <form action="/">
-                <label for="title">Title:</label>
-                <input type="text" name="title" id="title">
+                <label for="keyword">Title:</label>
+                <input type="text" name="keyword" id="keyword">
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                    <option value="">Any Type</option>
+                    <option value="movie">Movie</option>
+                    <option value="series">Series</option>
+                </select>
+                <fieldset class="grid">
+                    <label for="fromYear">From year:</label>
+                    <input type="number" name="fromYear" id="fromYear" min="1850">
+                    <label for="toYear">to year:</label>
+                    <input type="number" name="toYear" id="toYear" min="1850">
+                </fieldset>
                 <input type="submit" value="Search">
             </form>
         </section>
@@ -27,8 +39,11 @@
                 <header class="movie-title">
                     <%= doc.title %>
                 </header>
-                <img class="movie-poster" src="<%= doc.poster %>" alt="">
+                <img class="movie-poster" src="<%= doc.poster %>" alt= <%= `Here it is supposed to be displayer the poster: ${doc.title}`%>>
                 <footer>Año de lanzamiento: <%= doc.year %></footer>
+                <div class="movie-plot">
+                    <%=`${doc.plot}`%>
+                </div>
             </div>
             <% } %>
         </section>

@@ -29,3 +29,10 @@ h1{
     width: 20%;
     height: 20%;
 }
+.movie-plot{
+    margin: .5rem 15rem 1.5rem 15rem;
+    padding: .5rem;
+    border: 5px solid rgba(128, 128, 128, 0.516);
+    border-radius: 10px;
+    text-align: justify;
+}
